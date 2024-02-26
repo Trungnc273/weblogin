@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading........</title>
+    <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      overflow: hidden;
+    }
+
+    .hacker-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .hacker-char {
+      position: absolute;
+      color: lime;
+      font-size: 20px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-200%);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="hacker-rain"></div>
+
+<script>
+    alert('Trungdz');
+
+    var chars = ['N', 'G', 'U', 'Y', 'E', 'N','C','H', 'I', 'T', 'R', 'U', 'N','G'];
+
+    
+    function createHackerChars() {
+      var hackerRain = document.querySelector('.hacker-rain');
+      var windowHeight = window.innerHeight;
+      var windowWidth = window.innerWidth;
+      var numCharsPerRow = Math.floor(windowWidth / 20); 
+      var numRows = Math.floor(windowHeight / 40); 
+
+      for (var i = 0; i < numRows; i++) {
+        for (var j = 0; j < numCharsPerRow; j++) {
+          var span = document.createElement('span');
+          span.className = 'hacker-char';
+          span.innerText = chars[Math.floor(Math.random() * chars.length)];
+          span.style.top = (i * 40) + 'px';
+          span.style.left = (j * 20) + 'px';
+          span.style.animationDuration = (Math.random() * 2 + 1) + 's'; 
+          hackerRain.appendChild(span);
+        }
+      }
+    }
+
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      createHackerChars();
+    });
+  </script>
+</body>
+</html>
